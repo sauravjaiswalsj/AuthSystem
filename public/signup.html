@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Muhamad Nauval Azhar">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="This is a login page template based on Bootstrap 5">
+	<title>Authentication System</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container py-1">
+        <header class="pb-2 mb-2 border-bottom">
+          <a href="/index.html" class="d-flex align-items-center text-dark text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+            <span class="fs-4">System Design</span>
+          </a>
+        </header>
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-5">
+						<img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100">
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="name">Name</label>
+									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Name is required	
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
+									<input id="EmailID" type="email" class="form-control" name="email" value="" required>
+									<div class="invalid-feedback">
+										Email is invalid
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">Password</label>
+									<input id="UserPassword" type="password" class="form-control" name="password" required>
+								    <div class="invalid-feedback">
+								    	Password is required
+							    	</div>
+								</div>
+
+								<p class="form-text text-muted mb-3">
+									By registering you agree with our terms and condition.
+								</p>
+
+								<div class="align-items-center d-flex">
+									<button type="submit" id="sign-up-btn" class="btn btn-primary ms-auto">
+										Register	
+									</button>
+								</div>
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+								Already have an account? <a href="signin.html" class="text-dark">Login</a>
+							</div>
+						</div>
+					</div>
+					<div class="text-center mt-5 text-muted">
+						Copyright &copy; 2022 &mdash; Authentication System Design
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		let signUpSubmitButton = document.querySelector("#sign-up-btn");
+		//select user information
+		let name = document.getElementById("name");
+		let email = document.getElementById("EmailID");
+		let password = document.getElementById("UserPassword");
+
+		console.log({name,email,password});
+		const BASE_URL = "http://localhost:3300";
+
+		signUpSubmitButton.addEventListener("click", async () => {
+		let user = {
+			name: name.value,
+			email: email.value,
+			password: password.value,
+		};
+		console.log(user);
+		let request = await fetch(`${BASE_URL}/api/v1/signup`, {
+			method: "POST",
+			headers: {
+			"Content-Type": "application/json",
+			},
+			body: JSON.stringify(user),
+		});
+
+		let message = await request.text();
+
+		alert(message);
+		window.location.href='/signin.html'
+		});
+	</script>
+</body>
+</html>
