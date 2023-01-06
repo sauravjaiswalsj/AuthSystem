@@ -61,14 +61,13 @@
 		let email = document.getElementById("EmailID");
 
 		console.log({email});
-		const BASE_URL = "http://localhost:3300";
 
 		signUpSubmitButton.addEventListener("click", async () => {
 		let user = {
 			email: email.value,
 		};
 		console.log(user);
-		let request = await fetch(`${BASE_URL}/api/v1/forgotPassword`, {
+		let request = await fetch(`/api/v1/forgotPassword`, {
 			method: "POST",
 			headers: {
 			"Content-Type": "application/json",

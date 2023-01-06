@@ -78,7 +78,6 @@
 		let password = document.getElementById("UserPassword");
 
 		console.log({email,password});
-		const BASE_URL = "http://localhost:3300";
 		
 		signUpSubmitButton.addEventListener("click", async () =>{
 			let user = {
@@ -86,7 +85,7 @@
 			password: password.value,
 			};
 			console.log(user);
-        let request = await fetch(`${BASE_URL}/api/v1/signin`, {
+        let request = await fetch(`/api/v1/signin`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

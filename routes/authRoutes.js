@@ -125,8 +125,8 @@ router.post("/forgotPassword", async(req,res)=>{
             from: `"Auth System" <${process.env.NodeMailerEmail}>`, // sender address
             to : email,
             subject: "Reset Password.", // Subject line
-            html : `<p> Hello ${userExist.name}, Please verify your email using the link <a href="http://localhost:${process.env.port}/resetPassword.html?token=${token}"> reset your password. </a></p>`,
-            text : `<p> Hello ${userExist.name}, Please verify your email using the link <a href="http://localhost:${process.env.port}/resetPassword.html?token=${token}"> reset your password. </a></p>`,
+            html : `<p> Hello ${userExist.name}, Please verify your email using the link <a href="http://localhost:${process.env.PORT}/resetPassword.html?token=${token}"> reset your password. </a></p>`,
+            text : `<p> Hello ${userExist.name}, Please verify your email using the link <a href="http://localhost:${process.env.PORT}/resetPassword.html?token=${token}"> reset your password. </a></p>`,
         };
         
         transporter.sendMail(emailStruct, (error, info) => {
