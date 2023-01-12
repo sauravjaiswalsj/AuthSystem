@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3300;
 
 //Middleware
 // This parses the incoming request to json format and hence, localhost is taking infite time to respond.
